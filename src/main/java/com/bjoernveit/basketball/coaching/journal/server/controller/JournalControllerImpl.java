@@ -31,5 +31,7 @@ public class JournalControllerImpl implements JournalController {
     @Override
     public ResponseEntity<List<JournalEntry>> getFullJournal() {
         return ResponseEntity.ok(dbService.getAllEntries());
+
     }
+
 }
