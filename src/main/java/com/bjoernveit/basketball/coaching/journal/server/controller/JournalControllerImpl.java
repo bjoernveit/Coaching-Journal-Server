@@ -2,7 +2,7 @@ package com.bjoernveit.basketball.coaching.journal.server.controller;
 
 import com.bjoernveit.basketball.coaching.journal.server.Exception.DBException;
 import com.bjoernveit.basketball.coaching.journal.server.pojo.JournalEntry;
-import com.bjoernveit.basketball.coaching.journal.server.service.db.DBService;
+import com.bjoernveit.basketball.coaching.journal.server.service.db.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
@@ -10,17 +10,17 @@ import java.util.List;
 
 public class JournalControllerImpl implements JournalController {
 
-    final private DBService dbService;
+    final private StorageService storageService;
 
     @Autowired
-    public JournalControllerImpl(DBService dbService) {
-        this.dbService = dbService;
+    public JournalControllerImpl(StorageService storageService) {
+        this.storageService = storageService;
     }
 
     @Override
     public ResponseEntity<String> add(JournalEntry entry) {
         try {
-            dbService.saveEntry(entry);
+            storageService.saveEntry(entry);
             return ResponseEntity.ok("SUCCESS");
         } catch (DBException e) {
             e.printStackTrace();
@@ -30,7 +30,7 @@ public class JournalControllerImpl implements JournalController {
 
     @Override
     public ResponseEntity<List<JournalEntry>> getFullJournal() {
-        return ResponseEntity.ok(dbService.getAllEntries());
+        return ResponseEntity.ok(storageService.getAllEntries());
 
     }
 
