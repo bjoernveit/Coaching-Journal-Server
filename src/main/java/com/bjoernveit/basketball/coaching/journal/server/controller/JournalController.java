@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/journal")
 public interface JournalController {
-    // @ApiOperation(value = "Save a single Entry in the Journal.")
+    //@ApiOperation(value = "Save a single Entry in the Journal.")
     //@ApiResponse(code = 200, message = "status code, representing if entry was saved.")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     ResponseEntity<String> add(JournalEntry entry);
@@ -23,4 +23,6 @@ public interface JournalController {
     //@ApiResponse(code = 200, message = "List of journal Entries", response = JournalEntry.class, responseContainer = "List")
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = {"application/json"})
     ResponseEntity<List<JournalEntry>> getFullJournal();
+
+
 }

@@ -3,10 +3,12 @@ package com.bjoernveit.basketball.coaching.journal.server.service.db;
 import com.bjoernveit.basketball.coaching.journal.server.Exception.DBException;
 import com.bjoernveit.basketball.coaching.journal.server.pojo.JournalEntry;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
 
+@Service
 public class DBService implements StorageService {
 
 

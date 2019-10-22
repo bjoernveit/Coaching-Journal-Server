@@ -5,9 +5,14 @@ import com.bjoernveit.basketball.coaching.journal.server.pojo.JournalEntry;
 import com.bjoernveit.basketball.coaching.journal.server.service.db.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
+@RestController
+@RequestMapping("/journal")
 public class JournalControllerImpl implements JournalController {
 
     final private StorageService storageService;
@@ -31,7 +36,11 @@ public class JournalControllerImpl implements JournalController {
     @Override
     public ResponseEntity<List<JournalEntry>> getFullJournal() {
         return ResponseEntity.ok(storageService.getAllEntries());
+    }
 
+    @RequestMapping("/ready")
+    public ResponseEntity<String> checkIfStarted() {
+        return ResponseEntity.ok("Server running.");
     }
 
 }
