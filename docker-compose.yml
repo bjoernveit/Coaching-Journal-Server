@@ -1,0 +1,13 @@
+version: '3.5'
+services:
+  journal-server:
+    image: journal-server:latest
+    restart: always
+    ports:
+      - "80:8080"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:4
+    restart: always
